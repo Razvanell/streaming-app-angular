@@ -1,0 +1,17 @@
+.navbar {
+    background-color: black;
+    margin-bottom: 20px;
+}
+
+#logo {
+    color: burlywood
+}
+
+#mdb-navbar li a {
+    color: rgb(245, 201, 173);
+}
+
+#mdb-navbar li a:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

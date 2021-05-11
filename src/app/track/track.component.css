@@ -1,0 +1,99 @@
+.media-player {
+    background-color:#000000;
+    /*bottom position*/
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 99;
+    /*center elements*/
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+}
+
+audio {
+    border-radius: 10px;
+    background: rgb(1,101,3);
+    background: linear-gradient(243deg, rgba(1,101,3,1) 3%, rgba(162,200,163,1) 51%, rgba(213,226,198,1) 75%, rgba(101,99,145,1) 99%);    
+}
+
+.media-btn {
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 5px;
+}
+
+.fa-play {
+    display:block;
+    font-size: 0.7rem;
+    color:rgb(0, 27, 0);
+    text-align: center;
+}
+
+.select-playlist-button {
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.add-to-playlist-button {
+    display: inline;
+    font-size: 1rem;
+}
+
+.container {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    background: rgb(0,0,0);
+    border-radius: 10px;
+}
+
+/* SCROLLBAR TABLE*/
+.my-custom-scrollbar {
+    position: relative;
+    height: 57vh;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+.table th {
+    font-weight: 500;
+    color: #000000;
+    font-weight: bold;
+}
+
+.table thead {
+    background-color: #e2dff5;
+}
+.table>tbody>tr>td, .table>tfoot>tr>td, .table>thead>tr>td {
+    vertical-align: middle;
+}
+
+.table tr td {
+    color: #1a192b;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.table tr:first-child td:first-child {
+    width: 2.1rem;
+    color: #1a192b;
+}
+
+#view-all-button {
+    margin-right: 5px;
+}
+
+.alert {
+    margin-top: 5px;
+}
