@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Playlist } from './playlist'
+import { Track } from '../Track/track';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -29,7 +30,12 @@ export class PlaylistService {
     return this.http.put<Playlist>(`${this.apiServerUrl}/playlist/put`, playlist);
   }
 
-  public removeTrack(playlist: Playlist, trackId: number): Observable<Playlist> {
+  
+  public addTrackToPlaylist(playlist: Playlist, trackId: number): Observable<Playlist> {
+    return this.http.put<Playlist>(`${this.apiServerUrl}/playlist/add-track-to-playlist/${trackId}`, playlist);
+  }
+
+  public removeTrackFromPlaylist(playlist: Playlist, trackId: number): Observable<Playlist> {
     return this.http.put<Playlist>(`${this.apiServerUrl}/playlist/remove-track/${trackId}`, playlist);
   }
 

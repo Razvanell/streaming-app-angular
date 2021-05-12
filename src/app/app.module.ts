@@ -11,6 +11,7 @@ import { TrackComponent } from './track/track.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpConfigInterceptor } from './utils/http-config-interceptor';
+import { MediaplayerComponent } from './mediaplayer/mediaplayer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpConfigInterceptor } from './utils/http-config-interceptor';
     UserComponent,
     TrackComponent,
     PlaylistComponent,
-    NavbarComponent
+    NavbarComponent,
+    MediaplayerComponent
   ],
   imports: [
     BrowserModule,

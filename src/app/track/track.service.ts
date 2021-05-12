@@ -21,10 +21,6 @@ export class TrackService {
     return this.http.get<Track[]>(`${this.apiServerUrl}/track/all`);
   }
 
-  public addTrackToPlaylist(track: Track, playlistId: number): Observable<Track> {
-    return this.http.put<Track>(`${this.apiServerUrl}/track/add-track-to-playlist/${playlistId}`, track);
-  }
-
   public playTrack(id): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/track/play/${id}`);
   }

@@ -29,25 +29,6 @@ export class TrackComponent implements OnInit {
     this.router.navigate(["/", "track"])
   }
 
-  public searchTracks(key: string): void {
-    console.log(key);
-    const results: Track[] = [];
-    for (const track of this.tracks) {
-      if (track.title.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 ||
-        track.artist.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1) {
-        results.push(track);
-      }
-    }
-    this.tracks = results;
-    if (results.length === 0 || !key) {
-      setTimeout(
-        () => {
-          this.getTracks();
-        },
-        500);
-    }
-  }
-
   public getFiveTracks(): void {
     this.trackService.getFiveTracks().subscribe(
       (response: Track[]) => {
@@ -71,6 +52,25 @@ export class TrackComponent implements OnInit {
     );
   }
 
+  public searchTracks(key: string): void {
+    console.log(key);
+    const results: Track[] = [];
+    for (const track of this.tracks) {
+      if (track.title.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 ||
+        track.artist.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1) {
+        results.push(track);
+      }
+    }
+    this.tracks = results;
+    if (results.length === 0 || !key) {
+      setTimeout(
+        () => {
+          this.getTracks();
+        },
+        500);
+    }
+  }
+
   public getUserPlaylists(): void {
     this.playlistService.getUserPlaylists(1).subscribe(
       (response: Playlist[]) => {
@@ -86,18 +86,26 @@ export class TrackComponent implements OnInit {
     this.currentPlaylist = currentPlaylist;
   }
 
-  public checkIfTrackIsInCurrentPlaylist(track: Track): boolean {
-
-    // if (this.currentPlaylist.tracks.some(playlistTrack => playlistTrack.id === track.id)) {
-    //   return false;
-    // } 
-    return true;
-
+  public isCurrentPlaylistNull(): boolean {
+    if (this.currentPlaylist == null) {
+      return true;
+    } 
+    return false;
   }
 
-  public addTrackToPlaylist(track: Track, playlistId: number): void {
-    this.trackService.addTrackToPlaylist(track, playlistId).subscribe(
-      (response: Track) => {
+  public checkIfTrackIsInCurrentPlaylist(track: Track): boolean {
+    if (this.currentPlaylist) {
+      if (this.currentPlaylist.tracks.some(playlistTrack => playlistTrack.id === track.id)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public addTrackToPlaylist(trackId: number): void {
+    this.playlistService.addTrackToPlaylist(this.currentPlaylist, trackId).subscribe(
+      (response: Playlist) => {
+        this.getFiveTracks;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -105,8 +113,17 @@ export class TrackComponent implements OnInit {
     );
   }
 
-  /*Media Player*/
+  public removeTrackFromPlaylist(trackId: number): void {
+    this.playlistService.removeTrackFromPlaylist(this.currentPlaylist, trackId).subscribe(
+      (response: Playlist) => {
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
+  /*Send a track to the media-player component*/
   public playTrack(id): void {
     this.audioFileSource = "http://localhost:8081/api/track/play/" + id;
   }

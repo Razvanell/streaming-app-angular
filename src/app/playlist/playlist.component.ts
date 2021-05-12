@@ -98,7 +98,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   public onRemoveTrack(playlist: Playlist, trackId: number): void {
-    this.playlistService.removeTrack(playlist, trackId).subscribe(
+    this.playlistService.removeTrackFromPlaylist(playlist, trackId).subscribe(
       (response: Playlist) => {
         this.getUserPlaylists();
       },
