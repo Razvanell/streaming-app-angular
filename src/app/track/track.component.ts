@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnChanges, OnInit, SimpleChange } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Track } from './track';
 import { TrackService } from './track.service';
@@ -16,7 +16,7 @@ export class TrackComponent implements OnInit {
   public tracks: Track[];
   public currentPlaylist: Playlist;
   public viewAll = false;
-  public audioFileSource: string;
+  @Output() audioFileSource = new EventEmitter<string>();
 
   constructor(private trackService: TrackService, private playlistService: PlaylistService, private router: Router) { }
 
@@ -125,7 +125,7 @@ export class TrackComponent implements OnInit {
 
   /*Send a track to the media-player component*/
   public playTrack(id): void {
-    this.audioFileSource = "http://localhost:8081/api/track/play/" + id;
+    this.audioFileSource.emit("http://localhost:8081/api/track/play/" + id)
   }
 
 }
