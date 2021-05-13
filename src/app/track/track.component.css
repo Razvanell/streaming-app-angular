@@ -16,7 +16,8 @@
 }
 
 .select-playlist-button {
-    min-width: 125.1px;
+    text-align: center;
+    width: 110px;
     border: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -25,12 +26,13 @@
 }
 
 .add-remove-track-button {
-    min-width: 125.1px;
+    width: 110px;
+    max-height: 32px;
 }
 
 .add-remove-track-p {
-    display: inline;
-    font-size: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
 }
 
 .play-button {

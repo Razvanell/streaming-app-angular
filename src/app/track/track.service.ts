@@ -21,8 +21,4 @@ export class TrackService {
     return this.http.get<Track[]>(`${this.apiServerUrl}/track/all`);
   }
 
-  public playTrack(id): Observable<any> {
-    return this.http.get<any>(`${this.apiServerUrl}/track/play/${id}`);
-  }
-
 }

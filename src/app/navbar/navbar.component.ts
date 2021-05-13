@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  title = 'playlistdb-app';
   postForm: FormGroup;
   loginForm: FormGroup;
     

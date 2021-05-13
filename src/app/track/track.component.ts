@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Track } from './track';
 import { TrackService } from './track.service';
 import { Playlist } from '../playlist/playlist';
 import { PlaylistService } from '../playlist/playlist.service';
+import { MediaplayerService } from '../mediaplayer/mediaplayer.service';
 
 @Component({
   selector: 'app-track',
@@ -16,9 +17,9 @@ export class TrackComponent implements OnInit {
   public tracks: Track[];
   public currentPlaylist: Playlist;
   public viewAll = false;
-  @Output() audioFileSource = new EventEmitter<string>();
 
-  constructor(private trackService: TrackService, private playlistService: PlaylistService, private router: Router) { }
+  constructor(private trackService: TrackService, private playlistService: PlaylistService, private mediaplayerService: MediaplayerService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getFiveTracks();
@@ -123,9 +124,8 @@ export class TrackComponent implements OnInit {
     );
   }
 
-  /*Send a track to the media-player component*/
-  public playTrack(id): void {
-    this.audioFileSource.emit("http://localhost:8081/api/track/play/" + id)
+  public playTrack(id) {
+    this.mediaplayerService.changeAudioFileSource("http://localhost:8081/api/track/play/" + id);
   }
 
 }
