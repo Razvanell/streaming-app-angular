@@ -14,7 +14,7 @@ export class TrackService {
   constructor(private http: HttpClient) { }
 
   public getFiveTracks(): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiServerUrl}/track/five`);
+    return this.http.get<Track[]>(`${this.apiServerUrl}/track/random`);
   }
 
   public getTracks(): Observable<Track[]> {
