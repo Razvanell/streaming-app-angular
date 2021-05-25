@@ -5,8 +5,10 @@
 html body {
     height: 100%;
     min-height: 80vh;
+    margin: 0;
     background: rgb(15,14,14);
     background: linear-gradient(180deg, rgba(15,14,14,1) 0%, rgba(77,56,50,1) 50%, rgba(15,14,14,1) 100%);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .search {

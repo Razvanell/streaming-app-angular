@@ -3,12 +3,16 @@
     /*bottom position*/
     position: fixed;
     top: 0;
-     width: 100%;
+    width: 100%;
     z-index: 99;
 }
 
 #logo {
     color: burlywood
+}
+
+a {
+    font-size: 1rem;
 }
 
 #mdb-navbar li a {

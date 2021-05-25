@@ -12,6 +12,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpConfigInterceptor } from './utils/http-config-interceptor';
 import { MediaplayerComponent } from './mediaplayer/mediaplayer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MediaplayerComponent } from './mediaplayer/mediaplayer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService, {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true}],
   bootstrap: [AppComponent]
