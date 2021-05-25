@@ -34,7 +34,8 @@
                                             (click)="playTrack(track.id)"><i class="fas fa-play"></i></button></td>
                                     <td>{{track?.artist}}</td>
                                     <td>{{track?.title}}</td>
-                                    <td><button type="button" class="btn btn-outline-success add-remove-track-button"
+                                    <td>
+                                        <button type="button" class="btn btn-outline-success add-remove-track-button"
                                             *ngIf="!isCurrentPlaylistNull() && checkIfTrackIsInCurrentPlaylist(track)"
                                             (click)="addTrackToPlaylist(track.id)">
                                             <p class="add-remove-track-p">Add track</p>

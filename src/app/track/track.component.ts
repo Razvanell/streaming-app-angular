@@ -106,7 +106,6 @@ export class TrackComponent implements OnInit {
   public addTrackToPlaylist(trackId: number): void {
     this.playlistService.addTrackToPlaylist(this.currentPlaylist, trackId).subscribe(
       (response: Playlist) => {
-        this.getFiveTracks;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
