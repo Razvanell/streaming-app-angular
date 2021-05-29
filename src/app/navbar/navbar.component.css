@@ -23,3 +23,7 @@ a {
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+h5 {
+    font-size: 1.2rem;
+}

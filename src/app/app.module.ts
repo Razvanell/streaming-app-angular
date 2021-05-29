@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button'
 
 import { AppComponent } from './app.component';
 import { UserService } from './user/user.service';
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [UserService, {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true}],
   bootstrap: [AppComponent]
