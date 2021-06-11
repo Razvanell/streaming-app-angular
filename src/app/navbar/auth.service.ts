@@ -8,7 +8,8 @@ import { User } from '../user/user';
   providedIn: 'root'
 })
 export class AuthService {
-  user: User;
+  user: User | undefined;
+  test: String = "hello";
   private apiServerUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
@@ -25,9 +26,24 @@ export class AuthService {
     this.user = user;
   }
 
-  public getToken(): string {
+  public getUser(): User | undefined {
+    return this.user;
+  }
+
+  public getToken(): string | undefined{
     if(this.user) {
       return this.user.token;
     }
+    return undefined;
   }
+
+  public isUserLoged(): boolean {
+    return this.user != undefined;
+  }
+
+  public logOut(): void {
+    this.user = undefined;
+    window.location.reload;
+  }
+  
 }

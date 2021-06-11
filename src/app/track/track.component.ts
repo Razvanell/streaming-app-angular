@@ -6,6 +6,7 @@ import { TrackService } from './track.service';
 import { Playlist } from '../playlist/playlist';
 import { PlaylistService } from '../playlist/playlist.service';
 import { MediaplayerService } from '../mediaplayer/mediaplayer.service';
+import { AuthService } from '../navbar/auth.service';
 
 @Component({
   selector: 'app-track',
@@ -16,9 +17,13 @@ export class TrackComponent implements OnInit {
   public playlists: Playlist[];
   public tracks: Track[];
   public currentPlaylist: Playlist;
+  public currentPlaylistName: String = "Playlist";
   public viewAll = false;
 
-  constructor(private trackService: TrackService, private playlistService: PlaylistService, private mediaplayerService: MediaplayerService,
+  constructor(public authService: AuthService,
+    private trackService: TrackService,
+    private playlistService: PlaylistService,
+    private mediaplayerService: MediaplayerService,
     private router: Router) { }
 
   ngOnInit() {
@@ -73,7 +78,7 @@ export class TrackComponent implements OnInit {
   }
 
   public getUserPlaylists(): void {
-    this.playlistService.getUserPlaylists(1).subscribe(
+    this.playlistService.getUserPlaylists(this.authService.getUser().id).subscribe(
       (response: Playlist[]) => {
         this.playlists = response;
       },
@@ -85,6 +90,7 @@ export class TrackComponent implements OnInit {
 
   public setCurrentPlaylist(currentPlaylist: Playlist): void {
     this.currentPlaylist = currentPlaylist;
+    this.currentPlaylistName = currentPlaylist.name;
   }
 
   public isCurrentPlaylistNull(): boolean {
@@ -106,6 +112,7 @@ export class TrackComponent implements OnInit {
   public addTrackToPlaylist(trackId: number): void {
     this.playlistService.addTrackToPlaylist(this.currentPlaylist, trackId).subscribe(
       (response: Playlist) => {
+        this.openComponent;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

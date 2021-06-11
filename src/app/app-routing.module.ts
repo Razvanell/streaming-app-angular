@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TrackComponent } from './track/track.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { AuthGuard } from './navbar/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'user', component: UserComponent,
+    path: 'user', canActivate: [AuthGuard], component: UserComponent,
   },
   {
     path: '', component: TrackComponent,

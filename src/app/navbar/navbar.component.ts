@@ -14,7 +14,10 @@ export class NavbarComponent {
   postForm: FormGroup;
   loginForm: FormGroup;
     
-  constructor(private router: Router, private authService: AuthService, private FormBuilder: FormBuilder) {
+  constructor(public authService: AuthService,
+    private router: Router,
+    private FormBuilder: FormBuilder) {
+    
     this.postForm = this.FormBuilder.group({
       firstName: ["", Validators.minLength(2)],
       lastName: ["", Validators.minLength(2)],
@@ -50,8 +53,8 @@ export class NavbarComponent {
     this.authService.loginUser(this.loginForm.value).subscribe(
       (response: any) => {
         console.log(response);
-        let user = response.data.user;
-        user.token = response.data.token;
+        let user = response.result.user;
+        user.token = response.result.token;
         this.authService.setUser(user);
         this.loginForm.reset();
       },
@@ -66,6 +69,7 @@ export class NavbarComponent {
     document.getElementById('post-user-form').click();
     this.authService.postUser(this.postForm.value).subscribe(
       (response: User) => {
+        console.log(this.postForm.value);
         this.postForm.reset();
       },
       (error: HttpErrorResponse) => {

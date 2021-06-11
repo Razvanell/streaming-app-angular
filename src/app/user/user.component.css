@@ -2,6 +2,10 @@ body {
     margin-top: 20px;
 }
 
+.search {
+    margin-bottom: 10px;
+}
+
 .btn {
     color: black;
     font-weight: 600;

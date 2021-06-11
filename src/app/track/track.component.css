@@ -5,10 +5,15 @@
     border-radius: 10px;
 }
 
+.search {
+    margin-top: -12px;
+    margin-bottom: 5px;
+}
+
 /* SCROLLBAR TABLE*/
 .my-custom-scrollbar {
     position: relative;
-    height: 60vh;
+    height: 61vh;
     overflow: auto;
 }
 .table-wrapper-scroll-y {
@@ -23,6 +28,10 @@
     -moz-appearance: none;
     font-weight: 600;
     font-size: 0.9rem;
+}
+
+.float-right {
+    margin-right: 20px;
 }
 
 .add-remove-track-button {
@@ -76,10 +85,6 @@ thead {
 .table tr:first-child td:first-child {
     width: 2.1rem;
     color: #1a192b;
-}
-
-#view-all-button {
-    margin-right: 5px;
 }
 
 .alert {
