@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Playlist } from './playlist';
 import { PlaylistService } from './playlist.service';
+import { MediaplayerService } from '../mediaplayer/mediaplayer.service';
 
 @Component({
   selector: 'app-playlist',
@@ -17,7 +18,10 @@ export class PlaylistComponent implements OnInit {
   public putPlaylist: Playlist;
   postForm: FormGroup;
 
-  constructor(private router: Router, private route: ActivatedRoute, private playlistService: PlaylistService, private FormBuilder: FormBuilder) {
+  constructor(private router: Router, private route: ActivatedRoute,
+    private playlistService: PlaylistService,
+    private mediaplayerService: MediaplayerService,
+    private FormBuilder: FormBuilder) {
     this.postForm = this.FormBuilder.group({
       name: ["", Validators.minLength(2)]
     });
@@ -95,6 +99,10 @@ export class PlaylistComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  public playTrack(id) {
+    this.mediaplayerService.changeAudioFileSource("http://localhost:8081/api/track/play/" + id);
   }
 
   public onRemoveTrack(playlist: Playlist, trackId: number): void {

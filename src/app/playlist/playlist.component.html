@@ -21,8 +21,11 @@
                             aria-expanded="false">Tracks</button>
                         <div class="dropdown-menu col-11">
                             <div *ngFor="let track of playlist.tracks" class="track">
-                                {{track.artist}} - {{track.title}} <a class="btn-sm btn-secondary float-right"
+                                {{track.artist}} - {{track.title}} 
+                                <a class="btn-sm btn-secondary float-right"
                                     (click)="onRemoveTrack(playlist, track.id)"><i class="fa fa-times"></i></a>
+                                <a class="btn-sm btn-success float-right"
+                                    (click)="playTrack(track.id)"><i class="fa fa-play play-button"></i></a>
                             </div>
                             <!-- Notification if playlist is empty -->
                             <div *ngIf="playlist.tracks?.length == 0" class="col-12">
